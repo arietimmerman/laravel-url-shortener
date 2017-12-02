@@ -1,0 +1,31 @@
+{
+    "name": "arietimmerman/laravel-url-shortener",
+    "description": "Laravel Package for shortening urls",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arie Timmerman",
+            "email": "arietimmerman@gmail.com"
+        }
+    ],
+    "require": {
+		"php": "^7.0",
+        "laravel/framework": "^5.5",
+        "webpatser/laravel-uuid": "^3.0"
+    },
+    "classmap": [
+        "database/migrations"
+    ],
+    "autoload": {
+        "psr-4": {"ArieTimmerman\\Laravel\\URLShortener\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ArieTimmerman\\Laravel\\URLShortener\\Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "~3.0"
+    }
+}
