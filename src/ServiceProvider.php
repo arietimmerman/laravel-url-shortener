@@ -17,6 +17,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider{
 		
 		$this->loadViewsFrom(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views','urlshortener');
 		
+		$this->loadRoutesFrom(__DIR__.'/../routes/routes.php');
+		
 		$this->publishes([
 				__DIR__.'/../views' => resource_path('views/vendor/urlshortener'),
 		]);

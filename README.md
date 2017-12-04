@@ -19,25 +19,13 @@ and add the _service provider_ in your `config/app.php`.
 ];
 ~~~
 
+## Optional
+
 Publish the configuration and the view.
 
 ~~~.php
 php artisan vendor:publish --provider="ArieTimmerman\Laravel\URLShortener\ServiceProvider"
 ~~~
-
-Now register the Laravel _routes_. Open your `AppServiceProvider` and populate the `boot()` function with the following.
-
-~~~.php
-public function boot() {
-    // [...]
-	
-	\ArieTimmerman\Laravel\URLShortener\URLShortener::routes();
-	
-	// [...]
-}
-~~~
-
-## Optional
 
 Optionally, register for URLVisit events in your `EventServiceProvider`.
 
