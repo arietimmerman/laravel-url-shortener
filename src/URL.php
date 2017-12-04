@@ -5,6 +5,9 @@ namespace ArieTimmerman\Laravel\URLShortener;
 use Illuminate\Database\Eloquent\Model;
 use Webpatser\Uuid\Uuid;
 
+/**
+ * Model for the shortened URL and related details
+ */
 class URL extends Model
 {
 	
@@ -23,6 +26,12 @@ class URL extends Model
 	
 		static::creating(function ($model) {
 			$model->{$model->getKeyName()} = Uuid::generate()->string;
+			
+			// Generate a code if not set manually
+			if(!$model->code){
+				$model->code = self::generateCode($model->url);
+			}
+			
 		});
 	}
 	
@@ -39,6 +48,12 @@ class URL extends Model
 	
 		return $code;
 	
+	}
+	
+	public function __toString(){
+		
+		return (string) route('urlshortener.redirect', ['code' => $this->code]);
+		
 	}
 	
 	

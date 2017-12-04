@@ -13,8 +13,6 @@ class URLController extends Controller {
 	public function getRules(){
 		return [
 				"url" => 'required|url',
-// 				"reference" => 'nullable',
-// 				"meta" => 'nullable'
 		];
 	}
 	
@@ -24,21 +22,9 @@ class URLController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index(Request $request) {
+				
+		return URL::paginate(100);
 		
-// 		return \Webpatser\Uuid\Uuid::generate()->string;
-		
-		return URL::paginate(15);
-		
-	}
-	
-	
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create() {
-		//		
 	}
 	
 	/**
@@ -57,8 +43,6 @@ class URLController extends Controller {
 				
 		
 		$url = new URL(array_intersect_key($request->all(),$this->getRules()));
-		
-		$url->code = URL::generateCode($url);
 		
 		$url->save();
 		
