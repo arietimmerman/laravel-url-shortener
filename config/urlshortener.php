@@ -9,7 +9,10 @@ return [
 		'length_min' => env('URLSHORTENER_LENGTH_MIN', 4),
 		
 		// Optionally, an URL prefix. May be left empty. However, this would require registering the `routes` of this package after all your other routes
-		'url_prefix' => env('URLSHORTENER_URL_PREFIX', "_")
+		'url_prefix' => env('URLSHORTENER_URL_PREFIX', ""),
+		
+		// Use a prefix for the generated URL code
+		'url_prefix_code' => env('URLSHORTENER_URL_PREFIX_CODE', "__")
 		
 ];
 

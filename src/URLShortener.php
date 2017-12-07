@@ -34,12 +34,18 @@ class URLShortener {
 	}
 	
 	public static function routeRedirect(array $options = []) {
-		Route::get('{code}', '\ArieTimmerman\Laravel\URLShortener\Http\Controllers\RedirectController@index')->where('code', '^[^/]+$')->name('urlshortener.redirect');
+
+		$prefixCode = config("urlshortener.url_prefix_code");
+
+		Route::get($prefixCode . '{code}', '\ArieTimmerman\Laravel\URLShortener\Http\Controllers\RedirectController@index')->where('code', '^[^/]+$')->name('urlshortener.redirect');
 	}
 	
 	public static function shorten($url){
 		
-		return new URL( [ "url" => $url ]);
+		$url = new URL( [ "url" => $url ]);
+		$url->save();
+
+		return $url;
 		
 	}
 	

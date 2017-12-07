@@ -9,7 +9,15 @@ Install the package
 composer require arietimmerman/laravel-url-shortener
 ~~~
 
-and add the _service provider_ in your `config/app.php`.
+And start shortening URLs
+
+~~~.php
+(string)URLShortener::shorten("http://www.example.com");
+~~~
+
+# For Laravel < 5.5>
+
+Add the _service provider_ in your `config/app.php`.
 
 ~~~.php
 'providers' => [
