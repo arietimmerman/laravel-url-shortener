@@ -27,5 +27,17 @@
     },
     "require-dev": {
         "orchestra/testbench": "~3.0"
-    }
+    },
+    
+    "extra": {
+	    "laravel": {
+	        "providers": [
+	            "ArieTimmerman\\Laravel\\URLShortener\\ServiceProvider"
+	        ],
+	        "aliases": {
+	            "URLShortener": "ArieTimmerman\\Laravel\\URLShortener"
+	        }
+	    }
+	}
+	
 }
