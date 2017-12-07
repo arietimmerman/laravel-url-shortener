@@ -15,7 +15,7 @@ And start shortening URLs
 (string)URLShortener::shorten("http://www.example.com");
 ~~~
 
-# For Laravel < 5.5>
+# For Laravel < 5.5
 
 Add the _service provider_ in your `config/app.php`.
 
