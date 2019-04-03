@@ -42,8 +42,7 @@ class URLShortener {
 	
 	public static function shorten($url){
 		
-		$url = new URL( [ "url" => $url ]);
-		$url->save();
+		$url = URL::firstOrCreate(["url" => $url]);
 
 		return $url;
 		
