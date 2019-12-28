@@ -24,7 +24,10 @@ class URLShortener {
 	
 	private static function allRoutes(array $options = []){
 		
-		self::routeResource($options);
+		if(config('urlshortener.route_resource_enabled')){
+			self::routeResource($options);
+		}
+
 		self::routeRedirect($options);
 		
 	}

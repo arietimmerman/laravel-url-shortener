@@ -12,7 +12,10 @@ return [
 		'url_prefix' => env('URLSHORTENER_URL_PREFIX', ""),
 		
 		// Use a prefix for the generated URL code
-		'url_prefix_code' => env('URLSHORTENER_URL_PREFIX_CODE', "__")
-		
+		'url_prefix_code' => env('URLSHORTENER_URL_PREFIX_CODE', "__"),
+
+		// Allows disabling the resource endpoint
+		'route_resource_enabled' => env('URLSHORTENER_ROUTE_RESOURCE_ENABLED', true)
+
 ];
 
