@@ -8,15 +8,16 @@ use ArieTimmerman\Laravel\URLShortener\URL;
 /**
  * Event emitted when a shortened URL is accessed
  */
-class URLVisit{
-	
-	use SerializesModels;
-	
-	public $url;
-	
-	public function __construct(URL $url)
-	{
-		$this->url = $url;
-	}
-	
+class URLVisit
+{
+    
+    use SerializesModels;
+    
+    public $url;
+    
+    public function __construct(URL $url)
+    {
+        $this->url = $url;
+    }
+    
 }

@@ -13,24 +13,26 @@ class CreateUrlsTable extends Migration
      */
     public function up()
     {
-        Schema::create('art_urls', function (Blueprint $table) {
-        	
-            $table->uuid('id');
-            $table->primary('id');
+        Schema::create(
+            'art_urls', function (Blueprint $table) {
             
-            $table->string('code');
-            $table->string('url');
+                $table->uuid('id');
+                $table->primary('id');
             
-            $table->string('reference')->nullable();
-            $table->text('meta')->nullable();
+                $table->string('code');
+                $table->string('url');
             
-            $table->timestamps();
+                $table->string('reference')->nullable();
+                $table->text('meta')->nullable();
             
-            $table->unique('code');
-            $table->index('url');
-            $table->index('reference');
+                $table->timestamps();
             
-        });
+                $table->unique('code');
+                $table->index('url');
+                $table->index('reference');
+            
+            }
+        );
     }
 
     /**
