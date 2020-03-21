@@ -12,10 +12,17 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot()
     {
 
+        $configuration = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'urlshortener.php';
+
         $this->publishes(
             [
-                __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'urlshortener.php'=> config_path('urlshortener.php'),
+                $configuration => config_path('urlshortener.php'),
             ]
+        );
+
+        $this->mergeConfigFrom(
+            $configuration,
+            'urlshortener'
         );
 
         $this->loadMigrationsFrom(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'migrations');
