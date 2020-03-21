@@ -14,6 +14,9 @@ RUN composer require arietimmerman/laravel-url-shortener @dev
 
 RUN touch ./.database.sqlite && \
     echo "DB_CONNECTION=sqlite" >> ./.env && \
-    echo "DB_DATABASE=./.database.sqlite" >> ./.env
+    echo "DB_DATABASE=./.database.sqlite" >> ./.env && \
+    echo "APP_URL=http://localhost:18123" >> ./.env
 
-CMD php artisan serve
+RUN php artisan migrate
+
+CMD php artisan serve --host=0.0.0.0 --port=8000

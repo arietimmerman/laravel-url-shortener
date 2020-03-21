@@ -3,4 +3,6 @@ services:
   laravel-url-shortener:
     build: .
     ports:
-      - "8080:8080"
+      - "127.0.0.1:18123:8000"
+    volumes:
+      - .:/laravel-url-shortener

@@ -1,7 +1,7 @@
 
 A minimal Laravel package for shortening URLs. Apart for creating short URLs - like bitly - it also supported updating URL redirects and tracking URL clicks.
 
-# Laravel URL Shortener 
+# Laravel URL Shortener
 
 Install the package. It supports Laravel 5.5 and up (including 7.0 and up).
 
@@ -15,16 +15,12 @@ And start shortening URLs
 (string)URLShortener::shorten("http://www.example.com");
 ~~~
 
-# Usage for Laravel < 5.5
+## Usage for Laravel < 5.5
 
 Add the _service provider_ in your `config/app.php`.
 
 ~~~.php
-'providers' => [
-     // [..]
-    \ArieTimmerman\Laravel\URLShortener\ServiceProvider::class
-     // [..]
-];
+'providers' => [ /* [..] */ \ArieTimmerman\Laravel\URLShortener\ServiceProvider::class /* [..] */ ];
 ~~~
 
 ## Optional
@@ -43,7 +39,7 @@ protected $listen = [
 		'App\Listener\YourListener',
 	]
 ];
-~~~    
+~~~
 
 ## Configuration
 
@@ -51,7 +47,21 @@ See `config/urlshortener.php`
 
 ## Docker
 
+Build and start the docker container.
+
 ~~~
 docker-compose build
 docker-compose up
+~~~
+
+Now shorten an URL like this
+
+~~~
+docker-compose exec laravel-url-shortener php artisan url:shorten https://asgsdag.com
+~~~
+
+Check out the redirect
+
+~~~
+curl -v http://localhost:18123/code
 ~~~
