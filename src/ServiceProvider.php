@@ -6,6 +6,8 @@
 
 namespace ArieTimmerman\Laravel\URLShortener;
 
+use ArieTimmerman\Laravel\URLShortener\Console\URLShortenerCommand;
+
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
 
@@ -34,6 +36,12 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->publishes(
             [
                 __DIR__ . '/../views' => resource_path('views/vendor/urlshortener'),
+            ]
+        );
+
+        $this->commands(
+            [
+                URLShortenerCommand::class
             ]
         );
     }
