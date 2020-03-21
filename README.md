@@ -1,4 +1,8 @@
 
+![](https://github.com/arietimmerman/laravel-url-shortener/workflows/CI/badge.svg)
+[![Latest Stable Version](https://poser.pugx.org/arietimmerman/laravel-url-shortener/v/stable)](https://packagist.org/packages/arietimmerman/laravel-url-shortener)
+[![Total Downloads](https://poser.pugx.org/arietimmerman/laravel-url-shortener/downloads)](https://packagist.org/packages/arietimmerman/laravel-url-shortener)
+
 A minimal Laravel package for shortening URLs. Apart for creating short URLs - like bitly - it also supported updating URL redirects and tracking URL clicks.
 
 # Laravel URL Shortener
