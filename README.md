@@ -11,6 +11,7 @@ Install the package. It supports Laravel 5.5 and up (including 7.0 and up).
 
 ~~~
 composer require arietimmerman/laravel-url-shortener
+php artisan migrate
 ~~~
 
 And start shortening URLs
