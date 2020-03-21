@@ -20,7 +20,7 @@ class RedirectController extends Controller
             
         event(new URLVisit($url));
         
-        return \response()->view('vendor.urlshortener.redirect', ["url"=>$url], 301)->withHeaders(
+        return \response()->view('urlshortener::redirect', ["url"=>$url], 301)->withHeaders(
             [
                     'Content-Type' => "text/html; charset=utf-8",
             'Cache-Control' => "private, max-age=90",
