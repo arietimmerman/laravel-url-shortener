@@ -3,7 +3,7 @@ A minimal Laravel package for shortening URLs. Apart for creating short URLs - l
 
 # Laravel URL Shortener 
 
-Install the package 
+Install the package. It supports Laravel 5.5 and up (including 7.0 and up).
 
 ~~~
 composer require arietimmerman/laravel-url-shortener
@@ -15,7 +15,7 @@ And start shortening URLs
 (string)URLShortener::shorten("http://www.example.com");
 ~~~
 
-# For Laravel < 5.5
+# Usage for Laravel < 5.5
 
 Add the _service provider_ in your `config/app.php`.
 
@@ -45,6 +45,13 @@ protected $listen = [
 ];
 ~~~    
 
-# Configuration
+## Configuration
 
 See `config/urlshortener.php`
+
+## Docker
+
+~~~
+docker-compose build
+docker-compose up
+~~~
