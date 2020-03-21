@@ -19,6 +19,12 @@ And start shortening URLs
 (string)URLShortener::shorten("http://www.example.com");
 ~~~
 
+Or
+
+~~~.bash
+php artisan url:shorten http://www.example.com
+~~~
+
 ## Usage for Laravel < 5.5
 
 Add the _service provider_ in your `config/app.php`.
