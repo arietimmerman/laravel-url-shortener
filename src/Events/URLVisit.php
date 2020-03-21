@@ -10,14 +10,13 @@ use ArieTimmerman\Laravel\URLShortener\URL;
  */
 class URLVisit
 {
-    
+
     use SerializesModels;
-    
+
     public $url;
-    
+
     public function __construct(URL $url)
     {
         $this->url = $url;
     }
-    
 }
