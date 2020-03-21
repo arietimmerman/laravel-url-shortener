@@ -57,7 +57,7 @@ docker-compose up
 Now shorten an URL like this
 
 ~~~
-docker-compose exec laravel-url-shortener php artisan url:shorten https://asgsdag.com
+docker-compose exec laravel-url-shortener php artisan url:shorten https://www.example.com
 ~~~
 
 Check out the redirect
