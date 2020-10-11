@@ -1,46 +1,46 @@
 {
-    "name": "arietimmerman/laravel-url-shortener",
-    "description": "Laravel Package for shortening urls",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Arie Timmerman",
-            "email": "arietimmerman@gmail.com"
-        }
-    ],
-    "require": {
-		"php": "^7.0",
-        "illuminate/support": "^5.5 || ^6.0 || ^7.0",
-        "illuminate/database": "^5.5 || ^6.0 || ^7.0",
-        "illuminate/queue": "^5.5 || ^6.0 || ^7.0",
-        "webpatser/laravel-uuid": "^3.0"
-    },
-    "classmap": [
-        "database/migrations"
-    ],
-    "autoload": {
-        "psr-4": {"ArieTimmerman\\Laravel\\URLShortener\\": "src/"}
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "ArieTimmerman\\Laravel\\URLShortener\\Tests\\": "tests"
-        }
-    },
-    "require-dev": {
-        "orchestra/testbench": "~3.0",
-        "squizlabs/php_codesniffer": "^3.5"
-    },
-    
-    "extra": {
-	    "laravel": {
-	        "providers": [
-	            "ArieTimmerman\\Laravel\\URLShortener\\ServiceProvider"
-	        ],
-	        "aliases": {
-	            "URLShortener": "ArieTimmerman\\Laravel\\URLShortener\\URLShortener"
-	        }
-	    }
-	}
-	
+  "name": "arietimmerman/laravel-url-shortener",
+  "description": "Laravel Package for shortening urls",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arie Timmerman",
+      "email": "arietimmerman@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.0",
+    "webpatser/laravel-uuid": "^3.0",
+    "illuminate/database": "^6.0|^7.0|^8.0",
+    "illuminate/support": "^6.0|^7.0|^8.0",
+    "illuminate/console": "^6.0|^7.0|^8.0"
+  },
+  "classmap": [
+    "database/migrations"
+  ],
+  "autoload": {
+    "psr-4": {
+      "ArieTimmerman\\Laravel\\URLShortener\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ArieTimmerman\\Laravel\\URLShortener\\Tests\\": "tests"
+    }
+  },
+  "require-dev": {
+    "orchestra/testbench": "^5.2 || ^6.0",
+    "squizlabs/php_codesniffer": "^3.5"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "ArieTimmerman\\Laravel\\URLShortener\\ServiceProvider"
+      ],
+      "aliases": {
+        "URLShortener": "ArieTimmerman\\Laravel\\URLShortener\\URLShortener"
+      }
+    }
+  }
 }
