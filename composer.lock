@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c145bb496f9e4ebf34f52943b9f505f8",
+    "content-hash": "3a1136bccd1955f9aab98d4d031ff360",
     "packages": [
         {
             "name": "brick/math",
@@ -3866,24 +3866,24 @@
         },
         {
             "name": "webpatser/laravel-uuid",
-            "version": "3.0.2",
+            "version": "4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webpatser/laravel-uuid.git",
-                "reference": "a7ce65cdabbc9970fc2a87fdf67b48e0b1641d23"
+                "reference": "ac2d27479fc362cb24132b6b597039ff60ae93cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webpatser/laravel-uuid/zipball/a7ce65cdabbc9970fc2a87fdf67b48e0b1641d23",
-                "reference": "a7ce65cdabbc9970fc2a87fdf67b48e0b1641d23",
+                "url": "https://api.github.com/repos/webpatser/laravel-uuid/zipball/ac2d27479fc362cb24132b6b597039ff60ae93cc",
+                "reference": "ac2d27479fc362cb24132b6b597039ff60ae93cc",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0"
+                "php": "^7.0|^8.0"
             },
             "require-dev": {
-                "fzaninotto/faker": "~1.4",
-                "phpunit/phpunit": "~6.0"
+                "fakerphp/faker": "~1.12",
+                "phpunit/phpunit": "~9.3.8"
             },
             "type": "library",
             "extra": {
@@ -3897,8 +3897,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Webpatser\\Uuid": "src/"
+                "psr-4": {
+                    "Webpatser\\Uuid\\": "src/Webpatser/Uuid/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3912,11 +3912,11 @@
                 }
             ],
             "description": "Laravel package to generate and to validate a universally unique identifier (UUID) according to the RFC 4122 standard. Support for version 1, 3, 4 and 5 UUIDs are built-in.",
-            "homepage": "https://github.com/webpatser/uuid",
+            "homepage": "https://github.com/webpatser/laravel-uuid",
             "keywords": [
                 "UUID RFC4122"
             ],
-            "time": "2017-10-04T07:47:40+00:00"
+            "time": "2020-12-14T12:45:59+00:00"
         }
     ],
     "packages-dev": [
@@ -6180,7 +6180,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.0"
+        "php": "^7.0|^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
