@@ -7,7 +7,6 @@ use ArieTimmerman\Laravel\URLShortener\URL;
 
 class BasicTest extends TestCase
 {
-    
     private static $lengthMin = 4;
     private static $characterset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
     
@@ -19,9 +18,7 @@ class BasicTest extends TestCase
     
     public function testUrlCode()
     {
-        
-        for($i = 0;$i<10000;$i++){
-            
+        for ($i = 0;$i<10000;$i++) {
             $code = URL::generateCode("http://www.example.com");
             
             //Check if the length is correct
@@ -29,14 +26,6 @@ class BasicTest extends TestCase
             
             //Check if all characters are allowed
             $this->assertTrue(strlen(str_replace(str_split(self::$characterset), "", $code)) == 0);
-            
         }
-        
     }
-    
-    
-    
 }
-            
-            
-            
