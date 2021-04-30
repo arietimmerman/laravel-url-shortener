@@ -30,12 +30,55 @@ class URL extends Model
 
                 // Generate a code if not set manually
                 if (!$model->code) {
-                    $model->code = self::generateCode($model->url);
+                    $model->code = self::generateUniqueCode();
                 }
             }
         );
     }
 
+    /**
+     * Generates a unique code with the minimum length set in the configuration.
+     * 
+     * @return string
+     */
+    public static function generateUniqueCode()
+    {
+        $length = config("urlshortener.length_min");
+        $characters = config("urlshortener.characterset");
+
+        $attempts = 0;
+        do {
+            $code = '';
+            $attempts++;
+
+            for ($i = 0; $i < $length; $i++) {
+                $code .= $characters[random_int(0, strlen($characters) - 1)];
+            }
+
+            if ($attempts > 2) {
+                // Increases the code length after an existing code has been generated twice in a row.
+                $length++;
+                $attempts = 0;
+            }
+        } while (self::isCodeUsed($code)); // A new code is generated until it does not yet exist in the database.
+
+        return $code;
+    }
+
+    /**
+     * Checks if code is already in use. 
+     * 
+     * @param string $code
+     * @return boolean
+     */
+    public static function isCodeUsed($code)
+    {
+        return URL::where('code', $code)->exists();
+    }
+
+    /**
+     * @deprecated Does not test whether code already exists in the database before inserting.
+     */
     public static function generateCode($url)
     {
 
