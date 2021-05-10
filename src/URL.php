@@ -38,7 +38,7 @@ class URL extends Model
 
     public static function encode($num, $multiplier, $alphabet, $length_min)
     {
-        if ($num > pow(strlen($alphabet), $length_min)) {
+        if ($num >= pow(strlen($alphabet), $length_min)) {
             $length_min = ceil(log($num, strlen($alphabet)));
         }
 
@@ -63,7 +63,7 @@ class URL extends Model
         $length = config("urlshortener.length_min");
         $multiplier = config("urlshortener.multiplier");
 
-        $number = URL::count();
+        $number = URL::count() + 1;
 
         $code = self::encode($number, $multiplier, $characters, $length);
 

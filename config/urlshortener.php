@@ -2,6 +2,9 @@
 
 return [
         
+        // Multiplier for pseudo-random codes
+        'multiplier' => 6824219,
+
         // The characters used to generate an unique URL
         'characterset' => env('URLSHORTENER_CHARACTERSET', "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~"),
         
