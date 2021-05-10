@@ -36,24 +36,42 @@ class URL extends Model
         );
     }
 
+    public static function encode($num, $multiplier, $alphabet, $length_min)
+    {
+        if ($num > pow(strlen($alphabet), $length_min)) {
+            $length_min = ceil(log($num, strlen($alphabet)));
+        }
+
+        $result = '';
+
+        $num = $num * $multiplier % pow(strlen($alphabet), $length_min);
+        do {
+            $result = $alphabet[$num % strlen($alphabet)] . $result;
+            $num = intval($num / strlen($alphabet));
+        } while ($num);
+
+        $result = str_pad($result, $length_min, $alphabet[0], STR_PAD_LEFT);
+
+        return $result;
+    }
+
     public static function generateCode($url)
     {
-
         $code = "";
 
-        $characters = \str_split(config("urlshortener.characterset"));
+        $characters = config("urlshortener.characterset");
         $length = config("urlshortener.length_min");
+        $multiplier = config("urlshortener.multiplier");
 
-        for ($i = 0; $i < $length; $i++) {
-            $code .= $characters[\random_int(0, \count($characters) - 1)];
-        }
+        $number = URL::count();
+
+        $code = self::encode($number, $multiplier, $characters, $length);
 
         return $code;
     }
 
     public function __toString()
     {
-
         return (string) route('urlshortener.redirect', ['code' => $this->code]);
     }
 }
