@@ -1,9 +1,7 @@
 <?php
 
-namespace ArieTimmerman\Laravel\OAuth2\Tests;
+namespace ArieTimmerman\Laravel\URLShortener\Tests;
 
-use Orchestra\Testbench\TestCase;
-use ArieTimmerman\Laravel\URLShortener\URL;
 use ArieTimmerman\Laravel\URLShortener\URLShortener;
 use Illuminate\Support\Facades\Route;
 
@@ -12,7 +10,10 @@ class RouteTest extends TestCase
     
     protected function getEnvironmentSetUp($app)
     {
+        parent::getEnvironmentSetUp($app);
         $app ['config']->set('urlshortener.route_resource_enabled', false);
+        $app ['config']->set('urlshortener.url_prefix_code', '');
+        
     }
     
     public function testRoutesRegistered()
