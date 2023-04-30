@@ -1,20 +1,20 @@
 {
-  "name": "arietimmerman/laravel-url-shortener",
+  "name": "stucchi/laravel-url-shortener",
   "description": "Laravel Package for shortening urls",
   "type": "library",
   "license": "MIT",
   "authors": [
     {
-      "name": "Arie Timmerman",
-      "email": "arietimmerman@gmail.com"
+      "name": "Luca Stucchi",
+      "email": "luca.stucchi@gmail.com"
     }
   ],
   "require": {
     "php": "^7.0|^8.0",
     "webpatser/laravel-uuid": "^3.0|^4.0",
-    "illuminate/database": "^6.0|^7.0|^8.0|^9.0",
-    "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
-    "illuminate/console": "^6.0|^7.0|^8.0|^9.0"
+    "illuminate/database": "^6.0|^7.0|^8.0|^9.0|^10.0",
+    "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0",
+    "illuminate/console": "^6.0|^7.0|^8.0|^9.0|^10.0"
   },
   "classmap": [
     "database/migrations"
