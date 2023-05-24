@@ -15,7 +15,9 @@ return [
         'url_prefix_code' => env('URLSHORTENER_URL_PREFIX_CODE', "__"),
 
         // Allows disabling the resource endpoint
-        'route_resource_enabled' => env('URLSHORTENER_ROUTE_RESOURCE_ENABLED', true)
+        'route_resource_enabled' => env('URLSHORTENER_ROUTE_RESOURCE_ENABLED', true),
+
+        'max_tries' => env('URLSHORTENER_MAX_TRIES', 20),
 
 ];
 

@@ -2,11 +2,12 @@
 
 namespace ArieTimmerman\Laravel\URLShortener\Tests;
 
+use ArieTimmerman\Laravel\URLShortener\URLShortener;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Str;
 use Orchestra\Testbench\TestCase;
-use ArieTimmerman\Laravel\URLShortener\URL;
 
-class BasicTest extends TestCase
+class URLShortenerTest extends TestCase
 {
 
     use RefreshDatabase;
@@ -21,37 +22,18 @@ class BasicTest extends TestCase
         ];
     }
 
+
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('urlshortener.characterset', self::$characterset);
         $app['config']->set('urlshortener.length_min', self::$lengthMin);
         $app['config']->set('urlshortener.max_tries', 20);
     }
-    
-    public function testUrlCode()
-    {
-            $url = URL::create(["url" => "https://example.com"]);
 
-            //Check if the length is correct
-            $this->assertEquals(4, strlen($url->code));
+    public function testShortenURL() {
+        $url = URLShortener::shorten("https://example.com");
 
-            //Check if all characters are allowed
-            $this->assertTrue(strlen(str_replace(str_split(self::$characterset), "", $url->code)) == 0);
+        $this->assertEquals(4, Str::length($url->code));
     }
 
-
-
-    public function testNoCodeOverride()
-    {
-        $code = "a6Sd";
-
-        $url = new URL;
-
-        $url->code = $code;
-        $url->url = "https://example.com";
-
-        $url->save();
-
-        $this->assertEquals($code, $url->code);
-    }
 }

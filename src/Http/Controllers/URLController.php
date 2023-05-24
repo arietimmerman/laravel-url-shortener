@@ -2,7 +2,7 @@
 
 namespace ArieTimmerman\Laravel\URLShortener\Http\Controllers;
 
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use ArieTimmerman\Laravel\URLShortener\URL;
@@ -40,11 +40,11 @@ class URLController extends Controller
     {
         
         $validator = Validator::make($request->all(), $this->getRules());
-        
+
         if ($validator->fails()) {
-            var_dump($validator->errors());
+            abort(422, $validator->errors());
         }
-                
+
         
         $url = new URL(array_intersect_key($request->all(), $this->getRules()));
         
@@ -61,17 +61,6 @@ class URLController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        return URL::where('id', $id)->firstOrFail();
-    }
-    
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id            
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         return URL::where('id', $id)->firstOrFail();
     }
@@ -111,6 +100,8 @@ class URLController extends Controller
         
         $url = URL::where('id', $id)->firstOrFail();
         $url->delete();
+
+        return response(null, 204);
         
     }
 }

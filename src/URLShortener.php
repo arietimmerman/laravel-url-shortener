@@ -1,7 +1,7 @@
 <?php
 
 namespace ArieTimmerman\Laravel\URLShortener;
-use Route;
+use Illuminate\Support\Facades\Route;
 
 /**
  * Helper class for the URL shortener
@@ -39,7 +39,7 @@ class URLShortener
     
     public static function routeResource(array $options = [])
     {
-        Route::resource('urls', \ArieTimmerman\Laravel\URLShortener\Http\Controllers\URLController::class);
+        Route::resource('urls', \ArieTimmerman\Laravel\URLShortener\Http\Controllers\URLController::class)->except(['edit']);
     }
     
     public static function routeRedirect(array $options = [])

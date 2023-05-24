@@ -2,7 +2,9 @@
 
 namespace ArieTimmerman\Laravel\URLShortener;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Webpatser\Uuid\Uuid;
 
 /**
@@ -20,40 +22,44 @@ class URL extends Model
 
     public $incrementing = false;
 
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
-
         static::creating(
-            function ($model) {
-                $model->{$model->getKeyName()} = Uuid::generate()->string;
-
-                // Generate a code if not set manually
-                if (!$model->code) {
-                    $model->code = self::generateCode($model->url);
+            function (URL $url) {
+                $url->{$url->getKeyName()} = Uuid::generate()->string;
+                if (!$url->code) {
+                    $url->code = $url->generateCode();
                 }
             }
         );
     }
 
-    public static function generateCode($url)
+
+    /**
+     *
+     * Generates a unique code for the short url with uniqueness verification
+     *
+     * @return string
+     * @throws Exception If amount of retries exceeded
+     */
+
+    public function generateCode(): string
     {
+        $tries = 0;
 
-        $code = "";
-
-        $characters = \str_split(config("urlshortener.characterset"));
-        $length = config("urlshortener.length_min");
-
-        for ($i = 0; $i < $length; $i++) {
-            $code .= $characters[\random_int(0, \count($characters) - 1)];
+        while ($tries < config("urlshortener.max_tries")) {
+            $key = Str::random(config("urlshortener.length_min"));
+            if (false === $this->newQuery()->where('code', $key)->exists()) {
+                return $key;
+            }
+            $tries++;
         }
-
-        return $code;
+        throw new Exception("Unable to generate unique token");
     }
 
     public function __toString()
     {
-
         return (string) route('urlshortener.redirect', ['code' => $this->code]);
     }
 }
